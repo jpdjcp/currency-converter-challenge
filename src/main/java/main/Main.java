@@ -7,9 +7,9 @@ public class Main {
         int code1 = 0;
         int code2 = 0;
         double mount = 1.0;
-        double resultado = 0;
-        String currency1 = "";
-        String currency2 = "";
+        double result = 0;
+        String baseCurrency = "";
+        String targetCurrency = "";
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -27,15 +27,14 @@ public class Main {
                 code2 = scanner.nextInt();
                 if (code2 == 7) { break; }
 
-                currency1 = decodeChoice(code1);
-                currency2 = decodeChoice(code2);
+                baseCurrency = convertCurrencyCodeToString(code1);
+                targetCurrency = convertCurrencyCodeToString(code2);
 
                 Search search = new Search();
-                Conversion conversion = search.search(currency1, currency2);
-                resultado = mount * conversion.conversion_rate();
-                System.out.println(mount + " " + currency1 + " equivalen " + resultado + " " + currency2);
+                Conversion conversion = search.search(baseCurrency, targetCurrency);
+                result = mount * conversion.conversion_rate();
+                System.out.println(mount + " " + baseCurrency + " equivalen " + result + " " + targetCurrency);
 
-                System.out.println("\n\n" + conversion);
             } catch (Exception e) {
                 System.out.println("Error:\n"
                         + e.getMessage());;
@@ -57,7 +56,7 @@ public class Main {
                 """);
     }
 
-    public static String decodeChoice (int choice) {
+    public static String convertCurrencyCodeToString(int choice) {
         return switch (choice) {
             case 1 -> "ARS";
             case 2 -> "BOB";
