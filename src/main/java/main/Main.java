@@ -14,15 +14,15 @@ public class Main {
 
         while (true) {
             try {
-                System.out.println("Elija la moneda de origen:");
+                System.out.println("\n*** Elija la moneda de origen: ***");
                 currencyMenu();
                 code1 = scanner.nextInt();
                 if (code1 == 7) { break; }
 
-                System.out.println("Ingrese el monto:");
+                System.out.println("\n*** Ingrese el monto: ***");
                 mount = scanner.nextDouble();
 
-                System.out.println("Elija la moneda de destino");
+                System.out.println("\n*** Elija la moneda de destino ***");
                 currencyMenu();
                 code2 = scanner.nextInt();
                 if (code2 == 7) { break; }
@@ -33,7 +33,7 @@ public class Main {
                 Search search = new Search();
                 Conversion conversion = search.search(baseCurrency, targetCurrency);
                 result = mount * conversion.conversion_rate();
-                System.out.println(mount + " " + baseCurrency + " equivalen " + result + " " + targetCurrency);
+                System.out.println("\n" + mount + " " + baseCurrency + " equivalen " + result + " " + targetCurrency);
 
             } catch (Exception e) {
                 System.out.println("Error:\n"
@@ -41,7 +41,7 @@ public class Main {
             }
         }
         scanner.close();
-        System.out.println("Programa finalizado.");
+        System.out.println("\n*** Programa finalizado. ***");
     }
 
     public static void currencyMenu() {
